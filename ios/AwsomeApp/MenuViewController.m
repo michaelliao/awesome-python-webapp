@@ -34,7 +34,7 @@
 - (void)requestMenuFromNetwork
 {
     [self showNetworkError:NO showIndicator:NO];
-    NSURL* theURL = [NSURL URLWithString:@"http://192.168.0.3:9000/api/blogs?format=html"];
+    NSURL* theURL = [NSURL URLWithString:@"http://awesome.liaoxuefeng.com/api/blogs?format=html"];
     NSURLRequest* request = [NSURLRequest requestWithURL:theURL cachePolicy:NSURLCacheStorageAllowed timeoutInterval:10];
     NSURLConnection* conn = [NSURLConnection connectionWithRequest:request delegate:self];
     if (conn) {
