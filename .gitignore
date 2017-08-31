@@ -67,3 +67,5 @@ ehthumbs.db
 Thumbs.db
 MANIFEST
 
+## Directory-based project format:
+.idea/
