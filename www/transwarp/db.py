@@ -150,7 +150,7 @@ def create_engine(user, password, database, host='127.0.0.1', port=3306, **kw):
     if engine is not None:
         raise DBError('Engine is already initialized.')
     params = dict(user=user, password=password, database=database, host=host, port=port)
-    defaults = dict(use_unicode=True, charset='utf8', collation='utf8_general_ci', autocommit=False)
+    defaults = dict(use_unicode=True, charset='utf8', collation='utf8_general_ci', autocommit=True)
     for k, v in defaults.iteritems():
         params[k] = kw.pop(k, v)
     params.update(kw)

@@ -1,0 +1,70 @@
+{% extends '__base__.html' %}
+
+{% block title %}编辑日志{% endblock %}
+
+{% block beforehead %}
+
+<script>
+
+var
+    action = '{{ action }}',
+    redirect = '{{ redirect }}';
+
+var vm;
+
+$(function () {
+    vm = new Vue({
+        el: '#form-blog',
+        data: {
+            name: '',
+            summary: '',
+            content: ''
+        },
+        methods: {
+            submit: function (event) {
+                event.preventDefault();
+                postApi(action, this.$data, function (err, r) {
+                    if (err) {
+                        alert(err);
+                    }
+                    else {
+                        alert('保存成功！');
+                        return location.assign(redirect);
+                    }
+                });
+            }
+        }
+    });
+});
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="uk-width-1-1">
+        <form id="form-blog" v-on="submit: submit" class="uk-form uk-form-stacked">
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <input v-model="name" class="uk-width-1-1">
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <textarea v-model="summary" rows="4" class="uk-width-1-1"></textarea>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <div class="uk-form-controls">
+                    <textarea v-model="content" rows="8" class="uk-width-1-1"></textarea>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <button type="submit" class="uk-button uk-button-primary">保存</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
